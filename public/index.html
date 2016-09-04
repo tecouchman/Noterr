@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="quickNote" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>QuickNote</title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
+		<base href="/">
+	</head>
+	<body>
+
+		<nav class="navbar navbar-default navbar-fixed-top">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+				
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#">
+				  <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+				  <span> QuickNote</span>
+			  </a>
+			</div>
+		  </div>
+		</nav>
+		
+		<div ng-view></div>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+		<script type="text/javascript" src="/javascript/app.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</body>
+</html>

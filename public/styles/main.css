@@ -1,0 +1,31 @@
+body {
+	margin: 70px 0 20px 0;
+}
+
+.navbar {
+	background-color: #91679d;
+}
+.navbar *{
+	color: white;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: white;
+}
+
+.btn.btn-default {
+	background-color: #91679d;
+	color: white;
+}
+
+.navbar-toggle {
+	border: none;
+}
+
+.note {
+	padding: 15px !important;
+	border: 1px solid #cccccc;
+	border-radius: 5px !important;
+	box-shadow: 0px 2px 3px rgba(0,0,0,0.1);
+	margin-bottom: 5px
+}

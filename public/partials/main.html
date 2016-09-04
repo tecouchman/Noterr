@@ -1,0 +1,17 @@
+<div class="container col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+	<div class="input-group">
+		<input type="text" ng-model="newNote" class="form-control input-lg" placeholder="New note" />
+		<span class="input-group-btn">
+			<button class="btn btn-default btn-lg" type="button" ng-click="addNote()">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+			</button>
+		</span>
+	</div>
+	
+	<br />
+	<div class="note-list">
+		<div class="note" ng-repeat="note in notes">
+			{{ note }}
+		</div>
+	</div>
+</div>
