@@ -4,7 +4,7 @@ body {
 }
 
 .navbar {
-	background-color: #43f2b4;
+	background-color: #41e0a7;
 }
 .navbar *{
 	color: white;
@@ -15,7 +15,7 @@ body {
 }
 
 .btn.btn-default {
-	background-color: #43f2b4;
+	background-color: #41e0a7;
 	color: white;
 }
 
@@ -28,14 +28,40 @@ body {
 }
 
 .note {
-	padding: 15px !important;
 	margin-bottom: 15px;
 	background-color: white;
+	cursor: pointer;
+	box-shadow: 0px 3px 3px #ddd;
+	transition: 0.3s;
+}
+
+.note > .content {
+	padding: 15px !important;
+}
+
+.note.editing {
+	box-shadow: 0px 6px 8px #ddd;
 }
 
 .note h1 {
 	font-size: 1.5em;
 }
+
+.note .edit-bar {
+	overflow: hidden;
+	height: 0px;
+	background-color: #41e0a7;
+	transition: 0.3s;
+}
+.note.editing .edit-bar {
+	height: 50px;
+}
+.note .edit-bar > .content .btn {
+	margin: 7px !important;
+	float: right;
+}
+
+
 
 .form-control, .input-group-btn  .btn {
 	border-radius: 0;
@@ -43,6 +69,6 @@ body {
 }
 
 .navbar-brand {
-	background-color: #41e0a7;
+	background-color: #3dc694;
 	padding: 15px 20px;
 }

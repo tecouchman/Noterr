@@ -1,0 +1,22 @@
+<div class="row">
+    <form class="col-md-4 col-md-offset-4" ng-submit="register()">
+        <h1>Sign Up</h1>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" ng-model="newUser.username" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" ng-model="newUser.email_address" id="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" ng-model="newUser.password" id="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="password-confirm">Confirm Password</label>
+            <input type="password" class="form-control" ng-model="newUser.password_confirm" id="password-confirm" placeholder="Confirm Password">
+        </div>
+        <button type="submit" class="btn btn-default">Register</button>
+    </form>
+</div>  

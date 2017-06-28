@@ -1,7 +1,10 @@
 var express = require('express'),
-	router = express.Router();
+	router = express.Router(),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
 
-router.get('/', function(req, res) {
+
+router.post('/', function(req, res) {
 	res.send('testing 124');
 });
 	

@@ -8,7 +8,9 @@ var express = require('express'),
 	mongodb = require('mongodb'),
 	monk = require('monk'),
 	db = monk(mongo_url),
-	bodyParser = require('body-parser');
+	bodyParser = require('body-parser'),
+	passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
 
 app.use(bodyParser.json());
 
@@ -25,13 +27,29 @@ app.use(function(req, res, next) {
 	next();
 })
 
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    db.findOne({ username: username }, function(err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+
+
 // Set up the notes route
 app.use('/notes', notes);
 app.use('/users', users);
 
 // For all other routes return the index file
 app.get('/*', function(req, res) {
-	res.sendFile(__dirname + '/index.html');
+	res.sendFile(__dirname + '/public/index.html');
 })
 
 // Start listening for client requests
