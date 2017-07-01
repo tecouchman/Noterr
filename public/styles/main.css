@@ -27,16 +27,31 @@ body {
 	box-shadow: 0px 3px 3px #ddd;
 }
 
+
+.note-list {
+	clear: both;
+	padding-top: 15px;
+	text-align: center;
+}
 .note {
 	margin-bottom: 15px;
 	background-color: white;
 	cursor: pointer;
 	box-shadow: 0px 3px 3px #ddd;
 	transition: 0.3s;
+	text-align: left;
 }
 
 .note > .content {
 	padding: 15px !important;
+}
+
+.display-grid .note {
+	display: inline-block;
+	width: 200px;
+	min-height: 200px;
+	margin: 0 8px 15px 8px;
+	vertical-align: top;
 }
 
 .note.editing {

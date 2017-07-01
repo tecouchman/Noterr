@@ -7,9 +7,7 @@
 			</button>
 		</span>
 	</div>
-	
-	<br />
-	<div class="note-list">
-		<note ng-repeat="note in notes" ng-model="note" delete="delete" >
-	</div>
+</div>
+<div class="note-list" ng-class="display_mode=='list'? 'display-list container col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2' : 'display-grid container col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1'">
+		<note ng-repeat="note in notes" ng-model="note" delete="deleteNote" update="updateNote">
 </div>

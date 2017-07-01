@@ -1,11 +1,21 @@
-<div class="note" >
-    <div class="edit-bar">
+<div class="note" ng-click="enterEditMode($event)">
+    <div class="edit-bar" ng-click="enterDisplayMode($event)">
         <div class="content">
-            <span class="btn glyphicon glyphicon-trash" aria-hidden="true" ng-click="delete(note._id)"></span>
+            <span class="btn glyphicon glyphicon-trash" aria-hidden="true" ng-click="onDelete(note._id)"></span>
         </div>
     </div>
-    <div class="content">
+    <div ng-show="mode == 'display'" class="content">
         <h1>{{ note.title }}</h1>
         <p>{{ note.text }}</p>
     </div>
+    <div ng-show="mode == 'edit'" class="content">
+        <div class="form-group">
+            <input type="text" class="form-control" ng-model="editNote.title" id="title" placeholder="Title">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" ng-model="editNote.text" id="text" placeholder="Text">
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="update($event)">Save</button>
+        <button type="button" class="cancel btn btn-default" ng-click="cancel($event)">Cancel</button>
+    </div>  
 </div>
