@@ -6,16 +6,22 @@
     </div>
     <div ng-show="mode == 'display'" class="content">
         <h1>{{ note.title }}</h1>
-        <p>{{ note.text }}</p>
+        <p class="note-text">{{ note.text }}</p>
     </div>
     <div ng-show="mode == 'edit'" class="content">
         <div class="form-group">
             <input type="text" class="form-control" ng-model="editNote.title" id="title" placeholder="Title">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" ng-model="editNote.text" id="text" placeholder="Text">
+            <textarea class="form-control" ng-model="editNote.text" id="text" placeholder="Text" />
         </div>
-        <button type="submit" class="btn btn-default" ng-click="update($event)">Save</button>
-        <button type="button" class="cancel btn btn-default" ng-click="cancel($event)">Cancel</button>
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default" ng-click="update($event)">Save</button>
+            <button type="button" class="cancel btn btn-default" ng-click="cancel($event)">Cancel</button>
+        </div>
+        <p>
+            <div class="tiny">Created: {{ note.created }}</div>
+            <div class="tiny">Last Edit: {{ note.edited }}</div>
+        </p>
     </div>  
 </div>

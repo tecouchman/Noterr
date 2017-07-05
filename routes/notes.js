@@ -19,7 +19,8 @@ router.post('/:author_id', function(req, res) {
 	note.author_id = req.params['author_id'];
 	note.text = req.body['text'];
 	note.title = req.body['title'];
-	note.created = req.body['title'] || new Date();
+	note.created = req.body['created'] || new Date();
+	note.edited = req.body['edited'] || new Date();
 
 	notes_collection.insert(note, function(err, notes) {
 		res.send('Done');
