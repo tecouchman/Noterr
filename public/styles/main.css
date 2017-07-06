@@ -103,30 +103,44 @@ body {
 	border: none;
 }
 
-.color-picker {
+.color-picker a {
 	display: inline-block;
 }
 
-.color-picker a {
+.color-picker a, .color-picker input {
 	width: 30px;
 	height: 30px;
 	border-radius: 15px;
 	margin: 3px;
 	padding: 0 !important;
+	cursor: pointer;
 }
 
-.color-scheme.red, .color-picker.red a {
-	background-color: red;
+input[type="radio"]:checked+a {
+	border: 2px solid black;
 }
 
-.color-scheme.blue, .color-picker.blue a {
-	background-color: blue;
+.color-picker input {
+	opacity: 0;
+	position: absolute;
 }
 
-.color-scheme.yellow, .color-picker.yellow a {
-	background-color: yellow;
+.color-picker a.default {
+	background-color: #f0f0f0;
 }
 
-.color-scheme.green, .color-picker.green a {
-	background-color: green;
+.color-scheme.red, .color-picker a.red {
+	background-color: #ed6d5a;
+}
+
+.color-scheme.blue, .color-picker a.blue {
+	background-color: #83bcea;
+}
+
+.color-scheme.yellow, .color-picker a.yellow {
+	background-color: #f2d252;
+}
+
+.color-scheme.green, .color-picker a.green {
+	background-color: #7fefbc;
 }

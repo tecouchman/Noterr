@@ -21,6 +21,7 @@ router.post('/:author_id', function(req, res) {
 	note.title = req.body['title'];
 	note.created = req.body['created'] || new Date();
 	note.edited = req.body['edited'] || new Date();
+	note.color = req.body['color'];
 
 	notes_collection.insert(note, function(err, notes) {
 		res.send('Done');

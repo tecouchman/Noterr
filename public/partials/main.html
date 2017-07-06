@@ -6,12 +6,28 @@
 			<button class="btn btn-lg"><span aria-hidden="true" class="glyphicon glyphicon-check"></span></button>
 			<span class="dropdown">
 				<button class="btn btn-lg dropdown-toggle" id="color-menu" data-toggle="dropdown"><span aria-hidden="true" class="glyphicon glyphicon-tint"></span></button>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="color-menu">
-					<li role="presentation" class="color-picker red"><a role="menu-item" tabindex="-1" href="#"></a></li>
-					<li role="presentation" class="color-picker blue"><a role="menu-item" tabindex="-1" href="#"></a></li>
-					<li role="presentation" class="color-picker yellow"><a role="menu-item" tabindex="-1" href="#"></a></li>
-					<li role="presentation" class="color-picker green"><a role="menu-item" tabindex="-1" href="#"></a></li>
-				</ul>
+				<div class="dropdown-menu color-picker" role="menu" aria-labelledby="color-menu">
+					<label for="default">
+						<input name="default" type="radio" ng-model="newNote.color" ng-value="" role="presentation">
+						<a role="menu-item" tabindex="-1" href="#" class="default"></a>
+					</label>
+					<label for="red">
+						<input name="red" type="radio" ng-model="newNote.color" value="red" role="presentation">
+						<a role="menu-item" tabindex="-1" href="#" class="red"></a>
+					</label>
+					<label for="blue">
+						<input name="blue" type="radio" ng-model="newNote.color" value="blue" role="presentation">
+						<a role="menu-item" tabindex="-1" href="#" class="blue"></a>
+					</label>
+					<label for="yellow">
+						<input name="yellow" type="radio" ng-model="newNote.color" value="yellow" role="presentation">
+						<a role="menu-item" tabindex="-1" href="#" class="yellow"></a>
+					</label>
+					<label for="green">
+						<input name="green" type="radio" ng-model="newNote.color" value="green" role="presentation">
+						<a role="menu-item" tabindex="-1" href="#" class="green"></a>
+					</label>
+				</div>
 			</span>
 			<button class="pull-right btn btn-default btn-lg" type="button" ng-click="addNote()">
 				Add
