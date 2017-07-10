@@ -26,8 +26,11 @@
   },
   "homepage": "https://github.com/tecouchman/QuickNote#readme",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
+    "config": "^1.26.1",
     "express": "^4.14.0",
+    "express-session": "^1.15.3",
     "mongodb": "^2.2.29",
     "monk": "^6.0.1",
     "passport": "^0.3.2",

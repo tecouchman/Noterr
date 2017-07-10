@@ -1,6 +1,12 @@
-app.controller('users', function($scope, $http) {
+app.controller('users', function($scope, $http, $location, Auth) {
     $scope.newUser = {};
     $scope.user = {};
+    $scope.errors = {};
+
+console.log(Auth.isLoggedIn());
+    if (Auth.isLoggedIn()) {
+        $location.path('/notes');
+    }
 
     $scope.register = function() {
         event.preventDefault();
@@ -8,7 +14,7 @@ app.controller('users', function($scope, $http) {
         var newUser = $scope.newUser;
 
         if (newUser.password === newUser.password_confirm) {
-            $http.post('/users/register', newUser).then(function(res) {
+            $http.post('/api/users/register', newUser).then(function(res) {
             });
             $scope.newUser = {}
         }
@@ -18,8 +24,16 @@ app.controller('users', function($scope, $http) {
     }
 
     $scope.login = function() {
-        var newUser = $scope.user;
-        $http.post('/users/register', user).then(function(res) {
+        delete $scope.errors.login;
+        $http.post('/api/users/login', $scope.user).then(function(res) {
+            if (res.data['error']) {
+                $scope.errors.login = res.data['error'];
+            }
+            else 
+            {
+                Auth.setLoggedInUser(res.data["user"]);
+                $location.path('/notes');
+            }
 		});
     }
 

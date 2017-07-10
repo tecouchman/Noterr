@@ -1,4 +1,4 @@
-app.controller('notes', function($rootScope, $scope, $http) {
+app.controller('notes', function($rootScope, $scope, $http, $location, Auth) {
 
     init();
 
@@ -25,7 +25,7 @@ app.controller('notes', function($rootScope, $scope, $http) {
     $rootScope.menu = [ display_grid, display_list ]
 	
     function refresh() {
-        $http.get('/notes/123').then(function(res) {
+        $http.get('/api/notes/').then(function(res) {
             $scope.notes = res.data;
         });
     }
@@ -38,7 +38,7 @@ app.controller('notes', function($rootScope, $scope, $http) {
 
 			$scope.notes.splice(0, 0, newNote);
 			
-			$http.post('/notes/123', newNote).then(function(res) {
+			$http.post('/api/notes/', newNote).then(function(res) {
 			});
 
 			$scope.newNote = "";
@@ -46,8 +46,8 @@ app.controller('notes', function($rootScope, $scope, $http) {
 	}
 
     $scope.deleteNote = function(id) {
-        if (confirm("Are you sure you woudl like to delete this note? ")) {
-            $http.delete('/notes/' + id).then(function(res) {
+        if (confirm("Are you sure you would like to delete this note? ")) {
+            $http.delete('/api/notes/' + id).then(function(res) {
                 refresh();
             });
         }
@@ -55,11 +55,15 @@ app.controller('notes', function($rootScope, $scope, $http) {
 
     $scope.updateNote = function(note) {
         note.edited = new Date();
-        $http.put('/notes/123/' + note._id, note).then(function(res) {
+        $http.put('/api/notes/' + note._id, note).then(function(res) {
         });
     }
 
     function init() {
+
+        if(!Auth.isLoggedIn())
+            $location.path('/login');
+            
         $scope.notes = [];
 	    $scope.newNote = "";
         refresh();

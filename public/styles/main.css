@@ -79,7 +79,6 @@ body {
 .note .edit-bar {
 	overflow: hidden;
 	height: 0px;
-	background-color: #41e0a7;
 	transition: 0.3s;
 }
 .note.editing .edit-bar {
@@ -129,18 +128,38 @@ input[type="radio"]:checked+a {
 	background-color: #f0f0f0;
 }
 
+.color-scheme .edit-bar {
+	background-color: #f5f5f5;
+}
+
 .color-scheme.red, .color-picker a.red {
 	background-color: #ed6d5a;
+}
+
+.color-scheme.red .edit-bar {
+	background-color: #c15443;
 }
 
 .color-scheme.blue, .color-picker a.blue {
 	background-color: #83bcea;
 }
 
+.color-scheme.blue .edit-bar {
+	background-color: #6297c1;
+}
+
 .color-scheme.yellow, .color-picker a.yellow {
 	background-color: #f2d252;
 }
 
+.color-scheme.yellow .edit-bar {
+	background-color: #c6ab3d;
+}
+
 .color-scheme.green, .color-picker a.green {
 	background-color: #7fefbc;
+}
+
+.color-scheme.green .edit-bar {
+	background-color: #5fbf94;
 }
