@@ -1,12 +1,13 @@
 var express = require('express'),
-	router = express.Router();
+	router = express.Router(),
+	monk = require('monk');
 
 module.exports = function(passort) {
 
 	router.get('/', function(req, res) {
 		var db = req.db;
 		var notes_collection = db.get('notes');
-		notes_collection.find({ 'author_id' : req.user._id }, 
+		notes_collection.find({ 'author_id' : req.user._id.toString() }, 
 		{"sort" : {'created': -1 }},
 		function(err, notes) {
 			res.send(notes);
@@ -18,7 +19,7 @@ module.exports = function(passort) {
 		var notes_collection = db.get('notes');
 
 		var note = {}
-		note.author_id = req.user._id;
+		note.author_id = req.user._id.toString();
 		note.text = req.body['text'];
 		note.title = req.body['title'];
 		note.created = req.body['created'] || new Date();
@@ -33,7 +34,8 @@ module.exports = function(passort) {
 	router.put('/:note_id', function(req, res) {
 		var db = req.db;
 		var notes_collection = db.get('notes');
-		notes_collection.update({ '_id' : req.params['note_id'], 'author_id' : req.user._id } , req.body, function(err, notes) {
+		
+		notes_collection.update({ '_id' : req.params['note_id'], 'author_id' : req.user._id.toString() } , req.body, function(err, notes) {
 			res.send('Done');
 		});
 	});
@@ -41,7 +43,7 @@ module.exports = function(passort) {
 	router.delete('/:id', function(req, res) {
 		var db = req.db;
 		var notes_collection = db.get('notes');
-		notes_collection.remove({ '_id': req.params['id'], 'author_id' : req.user._id }, function(err, notes) {
+		notes_collection.remove({ '_id': req.params['id'], 'author_id' : req.user._id.toString() }, function(err, notes) {
 			console.log("done");
 			res.send('Done');
 		});
