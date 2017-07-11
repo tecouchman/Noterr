@@ -57,43 +57,11 @@ passport.use('login', new LocalStrategy(
   }
 ));
 
-passport.use('register', new LocalStrategy({
-    passReqToCallback : true
-  },
-  function(req, username, password, done) {
-    db.get('users').findOne({ username: username }, function(err, user) {
-      if (err) { 
-        console.log("ERROR during registration: " + err)
-        return done(err); 
-      }
-      if (user) {
-        //res.send({ "error" : "Username has already been registered" });
-        return done(null, false, { message: 'Incorrect username.' });
-      } else {
-        var newUser = {
-          username : username,
-          password : generateHash(password),
-          created : new Date(),
-          last_login : new Date(),
-          email_address : req.params["email_address"]
-        }
-        db.get('users').insert(newUser);
-        //res.send({ "success" : true });
-        return done(null, newUser);
-      }
-    });
-  }
-));
-
-function generateHash(password) {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
-}
-
 app.use(bodyParser.json());
 
 // routes:
 var notes = require(__dirname + '/routes/notes.js')(passport);
-var users = require(__dirname + '/routes/users.js')(passport);
+var users = require(__dirname + '/routes/users.js')(passport, bcrypt);
 
 // Set up static files
 app.use(express.static(__dirname + '/public/'));

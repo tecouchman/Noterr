@@ -10,13 +10,21 @@ console.log(Auth.isLoggedIn());
 
     $scope.register = function() {
         event.preventDefault();
-        
+        clearErrors();
         var newUser = $scope.newUser;
 
         if (newUser.password === newUser.password_confirm) {
             $http.post('/api/users/register', newUser).then(function(res) {
+                if (res.data['error']) {
+                    $scope.errors.registration = res.data['error'];
+                }
+                else 
+                {
+                    Auth.setLoggedInUser(res.data["user"]);
+                    $scope.newUser = {}
+                    $location.path('/notes');
+                }
             });
-            $scope.newUser = {}
         }
         else {
             alert("Passwords do not match");
@@ -24,7 +32,7 @@ console.log(Auth.isLoggedIn());
     }
 
     $scope.login = function() {
-        delete $scope.errors.login;
+        clearErrors();
         $http.post('/api/users/login', $scope.user).then(function(res) {
             if (res.data['error']) {
                 $scope.errors.login = res.data['error'];
@@ -37,4 +45,7 @@ console.log(Auth.isLoggedIn());
 		});
     }
 
+    function clearErrors() {
+        $scope.errors = {};
+    }
 });
